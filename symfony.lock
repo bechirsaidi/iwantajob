@@ -1,4 +1,16 @@
 {
+    "beberlei/assert": {
+        "version": "v3.3.2"
+    },
+    "behat/behat": {
+        "version": "v3.10.0"
+    },
+    "behat/gherkin": {
+        "version": "v4.9.0"
+    },
+    "behat/transliterator": {
+        "version": "v1.3.0"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {

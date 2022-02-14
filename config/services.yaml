@@ -2,7 +2,7 @@
 # Files in the packages/ subdirectory configure your dependencies.
 
 # Put parameters here that don't need to change on each machine where the app is deployed
-# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
 
 services:
@@ -19,6 +19,32 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+            - '../src/Tests/'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags: ['controller.service_arguments']
+
+    App\Gateway\JobSeekerGateway: '@App\Adapter\InMemory\Repository\JobSeekerRepository'
+    App\Gateway\RecruiterGateway: '@App\Adapter\InMemory\Repository\RecruiterRepository'
+    App\Gateway\UserGateway: '@App\Adapter\InMemory\Repository\UserRepository'
+    App\Gateway\OfferGateway: '@App\Adapter\InMemory\Repository\OfferRepository'
+    App\Gateway\InterestGateway: '@App\Adapter\InMemory\Repository\InterestRepository'
+
+    app.gateway.job_seeker:
+        alias: 'App\Gateway\JobSeekerGateway'
+        public: true
+    app.gateway.recruiter:
+        alias: 'App\Gateway\RecruiterGateway'
+        public: true
+    app.gateway.user:
+        alias: 'App\Gateway\UserGateway'
+        public: true
+    app.gateway.offer:
+        alias: 'App\Gateway\OfferGateway'
+        public: true
+    app.gateway.interest:
+        alias: 'App\Gateway\InterestGateway'
+        public: true

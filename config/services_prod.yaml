@@ -1,0 +1,9 @@
+imports:
+  - { resource: services.yaml }
+
+services:
+    App\Gateway\JobSeekerGateway: '@App\Adapter\Doctrine\Repository\JobSeekerRepository'
+    App\Gateway\RecruiterGateway: '@App\Adapter\Doctrine\Repository\RecruiterRepository'
+    App\Gateway\UserGateway: '@App\Adapter\Doctrine\Repository\UserRepository'
+    App\Gateway\OfferGateway: '@App\Adapter\Doctrine\Repository\OfferRepository'
+    App\Gateway\InterestGateway: '@App\Adapter\Doctrine\Repository\InterestRepository'
