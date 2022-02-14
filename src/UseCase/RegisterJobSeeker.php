@@ -21,17 +21,15 @@ class RegisterJobSeeker
     /**
      * @var UserPasswordEncoderInterface
      */
-    private UserPasswordEncoderInterface $userPasswordEncoder;
 
     /**
      * RegisterJobSeeker constructor.
      * @param JobSeekerGateway $jobSeekerGateway
      * @param UserPasswordEncoderInterface $userPasswordEncoder
      */
-    public function __construct(JobSeekerGateway $jobSeekerGateway, UserPasswordEncoderInterface $userPasswordEncoder)
+    public function __construct(JobSeekerGateway $jobSeekerGateway)
     {
         $this->jobSeekerGateway = $jobSeekerGateway;
-        $this->userPasswordEncoder = $userPasswordEncoder;
     }
 
     /**
